@@ -1,59 +1,53 @@
-# Kurdish-TTS
-In this repository, I will take you through the Tacotron2 model step by step to generate Text-to-Speech (TTS) for Kurdish.
+# Step 1: Prepare the Dataset for Kurdish TTS  
 
-Here’s your GitHub **Markdown-formatted** post:  
+To train **Tacotron2**, we need a well-structured dataset. This step includes:  
+✅ Organizing audio files  
+✅ Formatting text transcriptions  
 
-```md
-# **Step 1: Preparing the Dataset for Kurdish Text-to-Speech (TTS)**  
+---
 
-The most crucial part of training a **Tacotron2 model** is having a properly structured dataset. In this step, we will organize our audio files and create a list file (`list.txt`) that maps each audio file to its corresponding text.  
+## 1️⃣ Organizing Audio Files  
+Create a folder named **`wavs/`** to store your recordings:  
 
-## **1. Organizing Audio Files**  
-Inside your dataset folder, create a directory named **`wavs`**, where all your recorded `.wav` files will be stored. The structure should look like this:  
+dataset/ │── wavs/ │ ├── 1.wav │ ├── 2.wav │ ├── 3.wav │── list.txt
 
-```
-dataset/
-│── wavs/
-│   ├── 1.wav
-│   ├── 2.wav
-│   ├── 3.wav
-│   ├── ...
-│── list.txt
-```
+css
+Copy
+Edit
 
-All **audio files** must be in **WAV format**, with the following properties:  
-- **Sample rate**: 22050 Hz  
-- **Channels**: Mono (1 channel)  
+🔹 **Audio format requirements:**  
+- `.wav` files  
+- **Sample rate:** 22050 Hz  
+- **Channels:** Mono  
 
-To ensure all files meet these requirements, use the following Python code:  
+Convert files using Python:  
 
 ```python
 from pydub import AudioSegment
 
-# Convert audio to 22050 Hz, mono channel
-destination_path = "wavs/1.wav"  # Example file
-audio = AudioSegment.from_file(destination_path)
-audio = audio.set_frame_rate(22050)
-audio = audio.set_channels(1)
-audio.export(destination_path, format="wav")
-```
+audio = AudioSegment.from_file("wavs/1.wav")
+audio = audio.set_frame_rate(22050).set_channels(1)
+audio.export("wavs/1.wav", format="wav")
+2️⃣ Creating list.txt
+This file links audio paths with text transcriptions:
 
----
-
-## **2. Creating the `list.txt` File**  
-The `list.txt` file maps each **audio file** to its corresponding **text transcription**. It must follow this format **without extra spaces**:  
-
-```
+arduino
+Copy
+Edit
 wavs/1.wav|silav dinya
 wavs/2.wav|ez baş im
 wavs/3.wav|navê min ali ye
-```
+📌 Important: No extra spaces. Just wavs/file.wav|text
 
-Each line contains:  
-- The **relative path** to the `.wav` file  
-- A **text transcription**, separated by `|`  
+Now the dataset is ready! ✅ Next, we’ll preprocess the data for Tacotron2. 🚀
 
----
+markdown
+Copy
+Edit
 
-This dataset structure is essential for Tacotron2 training. In the next step, we will preprocess this data for the model. 🚀  
-```
+This version:  
+✔ **Keeps it simple**  
+✔ **Looks cleaner** with checkmarks and numbers  
+✔ **Maintains all necessary details**  
+
+Let me know if this works better! 😊
