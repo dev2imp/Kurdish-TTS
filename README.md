@@ -57,7 +57,3 @@ Each line contains:
 
 This dataset structure is essential for Tacotron2 training. In the next step, we will preprocess this data for the model. 🚀  
 ```
-
-You can copy and paste this directly into your **GitHub README** or any `.md` file, and it will maintain the correct formatting.  
-
-Would you like to add anything else before moving to the next step? 😊
